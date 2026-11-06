@@ -9,6 +9,7 @@ import com.intellij.openapi.project.Project
 import com.intellij.openapi.projectRoots.JavaSdk
 import com.intellij.openapi.projectRoots.ProjectJdkTable
 import com.intellij.openapi.projectRoots.Sdk
+import com.intellij.openapi.roots.LanguageLevelProjectExtension
 import com.intellij.openapi.roots.ProjectRootManager
 import com.intellij.openapi.util.io.FileUtil
 import java.io.File
@@ -84,6 +85,7 @@ class MiseProjectJdkSetup : AbstractProjectSdkSetup() {
                 }
 
             ProjectRootManager.getInstance(project).projectSdk = sdk
+            LanguageLevelProjectExtension.getInstance(project)?.default = true
             ApplySdkResult(
                 sdkName = sdk.name,
                 sdkVersion = sdk.versionString ?: tool.displayVersion,
